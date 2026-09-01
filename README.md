@@ -1,6 +1,6 @@
 ﻿# 🛡️ VeritasAI — Fake News & Misinformation Detection System
 
-[![Live Demo](https://img.shields.io/badge/LIVE%20DEMO-CLICK%20HERE-success?style=for-the-badge&logo=render&logoColor=white)](https://fake-news-detector-jobz.onrender.com/)
+[![Live Demo](https://img.shields.io/badge/LIVE%20DEMO-CLICK%20HERE-success?style=for-the-badge&logo=render&logoColor=white)](https://fake-news-detector-7ir9.onrender.com/)
 [![Python](https://img.shields.io/badge/Python-3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://python.org)
 [![Flask](https://img.shields.io/badge/Flask-3.0+-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
 [![Scikit-Learn](https://img.shields.io/badge/scikit--learn-1.4+-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
@@ -9,7 +9,7 @@
 
 ## 🌐 Live Application Link
 
-> ### 🔗 **[Open Live Demo: https://fake-news-detector-jobz.onrender.com/](https://fake-news-detector-jobz.onrender.com/)**
+> ### 🔗 **[Open Live Demo: https://fake-news-detector-7ir9.onrender.com/](https://fake-news-detector-7ir9.onrender.com/)**
 
 ---
 
@@ -98,7 +98,7 @@ This repository is pre-configured for 1-click deployment on **[Render.com](https
 
 #### Request:
 ```bash
-curl -X POST https://fake-news-detector-jobz.onrender.com/api/predict \
+curl -X POST https://fake-news-detector-7ir9.onrender.com/api/predict \
   -H "Content-Type: application/json" \
   -d '{"text": "NASA James Webb Space Telescope reveals detailed atmospheric composition of exoplanet."}'
 ```
