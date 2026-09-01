@@ -1,0 +1,124 @@
+﻿:root {
+    --primary-gradient: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+    --bg-dark: #0f172a;
+    --bg-card: rgba(30, 41, 59, 0.7);
+    --border-card: rgba(255, 255, 255, 0.08);
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--bg-dark);
+    color: #f1f5f9;
+    min-height: 100vh;
+}
+
+.text-gradient {
+    background: var(--primary-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.glass-card {
+    background: var(--bg-card);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border-radius: 1rem;
+}
+
+.hero-banner {
+    position: relative;
+}
+
+.hero-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 450px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.25) 0%, rgba(15, 23, 42, 0) 70%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #22c55e;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 0 8px #22c55e;
+}
+
+.max-w-700 { max-width: 700px; }
+.max-w-350 { max-width: 350px; }
+
+.custom-textarea {
+    resize: none;
+    border-radius: 0.75rem;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+.custom-textarea:focus {
+    background-color: #1e293b;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 0.25rem rgba(59, 130, 246, 0.25);
+    color: #fff;
+}
+
+.sample-btn {
+    transition: all 0.2s ease;
+    font-size: 0.82rem;
+}
+
+.sample-btn:hover {
+    transform: translateY(-1px);
+    border-color: #3b82f6 !important;
+}
+
+.progress-tall {
+    height: 1.5rem;
+    border-radius: 0.75rem;
+    overflow: hidden;
+}
+
+.verdict-real {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15), rgba(5, 150, 105, 0.05));
+    border-color: rgba(16, 185, 129, 0.4) !important;
+    color: #34d399;
+}
+
+.verdict-real .progress-bar {
+    background: linear-gradient(90deg, #10b981, #059669);
+}
+
+.verdict-fake {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.15), rgba(185, 28, 28, 0.05));
+    border-color: rgba(239, 68, 68, 0.4) !important;
+    color: #f87171;
+}
+
+.verdict-fake .progress-bar {
+    background: linear-gradient(90deg, #ef4444, #dc2626);
+}
+
+.metric-card {
+    transition: transform 0.2s ease;
+}
+
+.metric-card:hover {
+    transform: translateY(-2px);
+}
+
+.badge-tag-real {
+    background-color: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.badge-tag-fake {
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}

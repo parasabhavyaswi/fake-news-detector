@@ -1,0 +1,286 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VeritasAI — Intelligent Fake News & Misinformation Detector</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body class="bg-dark text-light">
+
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark border-bottom border-secondary border-opacity-25 py-3 sticky-top">
+        <div class="container">
+            <a class="navbar-brand d-flex align-items-center gap-2 fw-bold text-gradient" href="#">
+                <i class="fa-solid fa-shield-halved text-primary fs-3"></i>
+                <span>Veritas<span class="text-primary">AI</span></span>
+            </a>
+            <div class="d-flex align-items-center gap-3">
+                <span class="badge rounded-pill bg-success-subtle text-success border border-success-subtle px-3 py-2 d-none d-sm-inline-flex align-items-center gap-2">
+                    <span class="status-dot"></span> ML Engine Active
+                </span>
+                <a href="#history-section" class="btn btn-outline-secondary btn-sm px-3 rounded-pill">
+                    <i class="fa-solid fa-clock-rotate-left me-1"></i> History
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header / Hero Section -->
+    <header class="py-5 text-center hero-banner position-relative overflow-hidden">
+        <div class="container position-relative z-2">
+            <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-2 rounded-pill mb-3">
+                <i class="fa-solid fa-brain me-1"></i> NLP & Explainable AI Verification
+            </span>
+            <h1 class="display-4 fw-extrabold mb-3">Detect Fake News & Sensationalism</h1>
+            <p class="lead text-secondary mx-auto max-w-700">
+                Analyze journalism credibility, detect sensational clickbait tactics, and inspect word-level machine learning influence scores in real time.
+            </p>
+        </div>
+        <div class="hero-glow"></div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="container mb-5">
+        <div class="row g-4">
+            
+            <!-- Input & Configuration Column -->
+            <div class="col-lg-6">
+                <div class="card glass-card shadow-lg h-100 border-secondary border-opacity-25">
+                    <div class="card-header bg-transparent border-secondary border-opacity-25 d-flex justify-content-between align-items-center py-3">
+                        <span class="fw-semibold d-flex align-items-center gap-2">
+                            <i class="fa-solid fa-newspaper text-primary"></i> Article Content
+                        </span>
+                        <div class="btn-group btn-group-sm" role="group">
+                            <button type="button" class="btn btn-outline-primary active" id="tabTextBtn">
+                                <i class="fa-solid fa-align-left me-1"></i> Text
+                            </button>
+                            <button type="button" class="btn btn-outline-primary" id="tabFileBtn">
+                                <i class="fa-solid fa-file-arrow-up me-1"></i> Upload File
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="card-body d-flex flex-column gap-3">
+                        
+                        <!-- Sample Quick Loader -->
+                        <div class="sample-box p-3 rounded-3 border border-secondary border-opacity-25 bg-surface-hover">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <span class="small fw-semibold text-secondary">
+                                    <i class="fa-solid fa-bolt text-warning me-1"></i> Quick Load Sample:
+                                </span>
+                                <span id="sampleBadge" class="badge bg-secondary-subtle text-secondary small">Ready</span>
+                            </div>
+                            <div class="d-flex flex-wrap gap-2" id="samplesContainer">
+                                <button class="btn btn-sm btn-dark border-secondary border-opacity-50 sample-btn text-start" data-sample-id="1">
+                                    <span class="badge bg-success me-1">Real</span> Space Telescope
+                                </button>
+                                <button class="btn btn-sm btn-dark border-secondary border-opacity-50 sample-btn text-start" data-sample-id="2">
+                                    <span class="badge bg-success me-1">Real</span> Fed Rate Report
+                                </button>
+                                <button class="btn btn-sm btn-dark border-secondary border-opacity-50 sample-btn text-start" data-sample-id="3">
+                                    <span class="badge bg-danger me-1">Fake</span> Alien Mind Control
+                                </button>
+                                <button class="btn btn-sm btn-dark border-secondary border-opacity-50 sample-btn text-start" data-sample-id="4">
+                                    <span class="badge bg-danger me-1">Fake</span> $2 Spice Cure
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Text Area Input Mode -->
+                        <div id="textInputContainer" class="flex-grow-1 d-flex flex-column">
+                            <textarea id="articleText" class="form-control bg-dark-subtle text-light border-secondary border-opacity-50 flex-grow-1 p-3 custom-textarea" 
+                                placeholder="Paste the news article, press release, or headline here..." rows="9"></textarea>
+                            <div class="d-flex justify-content-between text-secondary small mt-2">
+                                <span id="charCountLabel">0 characters</span>
+                                <span id="wordCountLabel">0 words</span>
+                            </div>
+                        </div>
+
+                        <!-- File Upload Input Mode (Hidden by default) -->
+                        <div id="fileInputContainer" class="d-none flex-grow-1 flex-column justify-content-center align-items-center p-4 border border-dashed border-secondary rounded-3 text-center bg-dark-subtle">
+                            <i class="fa-solid fa-cloud-arrow-up display-4 text-primary mb-3"></i>
+                            <h6 class="fw-semibold">Drop your .txt or .pdf file here</h6>
+                            <p class="small text-secondary mb-3">Supports text documents up to 16MB</p>
+                            <input type="file" id="articleFile" class="form-control visually-hidden" accept=".txt,.pdf">
+                            <button type="button" class="btn btn-outline-primary btn-sm px-4" onclick="document.getElementById('articleFile').click()">
+                                Select Document
+                            </button>
+                            <div id="selectedFileName" class="mt-2 text-info small fw-medium"></div>
+                        </div>
+
+                        <!-- Action Buttons -->
+                        <div class="d-flex gap-2 pt-2">
+                            <button id="analyzeBtn" class="btn btn-primary px-4 py-2 flex-grow-1 fw-bold d-flex align-items-center justify-content-center gap-2">
+                                <i class="fa-solid fa-magnifying-glass-chart"></i>
+                                <span>Analyze Authenticity</span>
+                            </button>
+                            <button id="clearBtn" class="btn btn-outline-secondary px-3" title="Clear input">
+                                <i class="fa-solid fa-rotate-left"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Analysis & Output Column -->
+            <div class="col-lg-6">
+                <div class="card glass-card shadow-lg h-100 border-secondary border-opacity-25">
+                    <div class="card-header bg-transparent border-secondary border-opacity-25 py-3 d-flex justify-content-between align-items-center">
+                        <span class="fw-semibold d-flex align-items-center gap-2">
+                            <i class="fa-solid fa-chart-pie text-primary"></i> Verification Diagnostics
+                        </span>
+                        <span id="timestampBadge" class="text-secondary small">Awaiting submission</span>
+                    </div>
+                    
+                    <div class="card-body" id="outputBody">
+                        
+                        <!-- Initial Placeholder -->
+                        <div id="emptyState" class="text-center py-5 text-secondary my-auto">
+                            <i class="fa-solid fa-shield-virus display-3 text-secondary opacity-25 mb-3"></i>
+                            <h5>Ready to Analyze</h5>
+                            <p class="small max-w-350 mx-auto">
+                                Enter an article or choose a preset sample on the left to view credibility predictions and linguistic scores.
+                            </p>
+                        </div>
+
+                        <!-- Loading Spinner -->
+                        <div id="loadingState" class="d-none text-center py-5">
+                            <div class="spinner-border text-primary mb-3" style="width: 3rem; height: 3rem;" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                            <h6 class="fw-semibold">Scanning text linguistics & token vectors...</h6>
+                            <p class="small text-secondary">Evaluating classification confidence</p>
+                        </div>
+
+                        <!-- Results Dashboard (Hidden until prediction) -->
+                        <div id="resultsContainer" class="d-none d-flex flex-column gap-3">
+                            
+                            <!-- Verdict Card -->
+                            <div id="verdictBanner" class="p-4 rounded-3 text-center border">
+                                <div class="d-flex justify-content-center align-items-center gap-3 mb-2">
+                                    <i id="verdictIcon" class="fa-solid fa-circle-check fs-2"></i>
+                                    <h2 id="verdictTitle" class="m-0 fw-extrabold tracking-wide">AUTHENTIC NEWS</h2>
+                                </div>
+                                <p id="verdictSubtitle" class="small mb-3 text-light-50">High journalistic consistency and vocabulary fidelity detected.</p>
+                                
+                                <!-- Confidence Bar -->
+                                <div class="progress progress-tall bg-dark border border-secondary border-opacity-25 mb-2">
+                                    <div id="confidenceBar" class="progress-bar fw-bold" role="progressbar" style="width: 0%;">0%</div>
+                                </div>
+                                <div class="d-flex justify-content-between small text-secondary px-1">
+                                    <span>Fake Probability: <strong id="probFakeVal">0%</strong></span>
+                                    <span>Real Probability: <strong id="probRealVal">0%</strong></span>
+                                </div>
+                            </div>
+
+                            <!-- Linguistics Grid -->
+                            <div class="row g-2">
+                                <div class="col-sm-4">
+                                    <div class="metric-card p-3 rounded-3 bg-dark-subtle border border-secondary border-opacity-25 text-center">
+                                        <div class="text-secondary small mb-1">Sensationalism Score</div>
+                                        <h4 id="metricSensational" class="fw-bold mb-0 text-warning">0/100</h4>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="metric-card p-3 rounded-3 bg-dark-subtle border border-secondary border-opacity-25 text-center">
+                                        <div class="text-secondary small mb-1">Uppercase Emphasis</div>
+                                        <h4 id="metricCaps" class="fw-bold mb-0 text-info">0%</h4>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="metric-card p-3 rounded-3 bg-dark-subtle border border-secondary border-opacity-25 text-center">
+                                        <div class="text-secondary small mb-1">Exclamations</div>
+                                        <h4 id="metricPunct" class="fw-bold mb-0 text-light">0</h4>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Explainability / Key Contributing Factors -->
+                            <div class="p-3 rounded-3 bg-dark-subtle border border-secondary border-opacity-25">
+                                <h6 class="small fw-bold text-secondary mb-2 d-flex align-items-center justify-content-between">
+                                    <span><i class="fa-solid fa-tags text-primary me-1"></i> Influential Terms & ML Weights</span>
+                                    <span class="badge bg-secondary-subtle text-secondary">TF-IDF Importance</span>
+                                </h6>
+                                <div id="keyFactorsBadges" class="d-flex flex-wrap gap-2 pt-1">
+                                    <!-- Dynamic factors tags -->
+                                </div>
+                            </div>
+
+                            <!-- Diagnostic Flags -->
+                            <div class="p-3 rounded-3 bg-dark-subtle border border-secondary border-opacity-25">
+                                <h6 class="small fw-bold text-secondary mb-2">
+                                    <i class="fa-solid fa-list-check text-primary me-1"></i> Linguistic Findings
+                                </h6>
+                                <div id="diagnosticNotes" class="small text-secondary d-flex flex-column gap-1">
+                                    <!-- Dynamic notes -->
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- History Section -->
+        <div id="history-section" class="mt-5 pt-3">
+            <div class="card glass-card border-secondary border-opacity-25">
+                <div class="card-header bg-transparent border-secondary border-opacity-25 d-flex justify-content-between align-items-center py-3">
+                    <span class="fw-semibold d-flex align-items-center gap-2">
+                        <i class="fa-solid fa-clock-rotate-left text-primary"></i> Session Verification History
+                    </span>
+                    <button id="clearHistoryBtn" class="btn btn-outline-danger btn-sm rounded-pill px-3">
+                        <i class="fa-solid fa-trash me-1"></i> Clear Log
+                    </button>
+                </div>
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-dark table-hover align-middle mb-0" id="historyTable">
+                            <thead class="table-dark text-secondary small">
+                                <tr>
+                                    <th class="ps-4">Time</th>
+                                    <th>Verdict</th>
+                                    <th>Confidence</th>
+                                    <th>Sensationalism</th>
+                                    <th>Article Snippet</th>
+                                    <th class="pe-4 text-end">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="historyBody" class="small">
+                                <tr id="emptyHistoryRow">
+                                    <td colspan="6" class="text-center py-4 text-secondary">
+                                        No articles analyzed in this session yet.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-4 border-top border-secondary border-opacity-25 text-center text-secondary small">
+        <div class="container">
+            <p class="mb-1">VeritasAI &copy; 2026 — Machine Learning Misinformation Classification Engine</p>
+            <p class="opacity-75 mb-0">Built with Flask &bull; Scikit-Learn &bull; Bootstrap 5</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JS -->
+    <script src="/static/js/app.js"></script>
+</body>
+</html>
